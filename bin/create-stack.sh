@@ -18,7 +18,9 @@ function parseCommandLine() {
 				DOMAIN_NAME=${OPTARG}
 				KEY_NAME=$(echo $OPTARG | sed -e 's/\([^\.]*\).*/\1/g')
 				HOSTED_ZONE=$(echo $OPTARG | sed -e "s/^$i[^\.]*\.//g")
+				echo Hosted Zone is $HOSTED_ZONE
 				STACK_NAME=$(echo $DOMAIN_NAME | sed -e 's/[^a-zA-Z0-9]//g')
+				echo Stack Name is $STACK_NAME
 				STACK_DIR=stacks/$STACK_NAME
 				;;
 			\*)
@@ -150,8 +152,6 @@ function getHostTable() {
 	sort
 }
 
-
-
 function getPublicIPAddress() {
 	getHostTable | grep $1 | awk '{print $2}' | grep -v null
 }
@@ -164,7 +164,6 @@ function getAllPrivateIPAddresses() {
 	getHostTable | grep -v Bastion -v NAT | awk '{print $2}' | grep -v null
 }
 
-
 function checkHostedZoneExists() {
 	EXISTS=$( aws route53 list-hosted-zones  | \
 			jq -r '.HostedZones[] | .Name' | \
@@ -176,7 +175,6 @@ function checkHostedZoneExists() {
 	fi
 }
 
-
 function generatePassword() {
 	if [ ! -f $STACK_DIR/password.txt ] ; then
 		echo "INFO: generating new random password for account"
@@ -186,7 +184,6 @@ function generatePassword() {
 	fi
 	STACKATO_PASSWORD=$(cat $STACK_DIR/password.txt)
 }
-
 
 function checkPreconditions() {
 
