@@ -246,7 +246,7 @@
     "AppDnsRecord": {
       "Type": "AWS::Route53::RecordSetGroup",
       "Properties": {
-        "HostedZoneName": "dutchdevops.net.",
+        "HostedZoneName": "qbtest.net.",
         "RecordSets": [
           {
             "Name": { "Fn::Join" : [ "", [ "*.", { "Ref" : "KeyName" } , ".", {"Ref": "HostedZoneName"} ] ] },

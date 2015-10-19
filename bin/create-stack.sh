@@ -3,10 +3,11 @@
 export DOMAIN_NAME=
 export STACK_NAME=
 export KEY_NAME=
-export REGION=us-west-2
+export REGION=eu-west-1
 export STACK_DIR=stacks/
 
 function parseCommandLine() {
+
 	USAGE="Usage: $(basename $0) -d domain "
 
 	while getopts "r:d:" OPT; do
@@ -18,9 +19,7 @@ function parseCommandLine() {
 				DOMAIN_NAME=${OPTARG}
 				KEY_NAME=$(echo $OPTARG | sed -e 's/\([^\.]*\).*/\1/g')
 				HOSTED_ZONE=$(echo $OPTARG | sed -e "s/^$i[^\.]*\.//g")
-				echo Hosted Zone is $HOSTED_ZONE
 				STACK_NAME=$(echo $DOMAIN_NAME | sed -e 's/[^a-zA-Z0-9]//g')
-				echo Stack Name is $STACK_NAME
 				STACK_DIR=stacks/$STACK_NAME
 				;;
 			\*)

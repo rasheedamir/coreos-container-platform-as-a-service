@@ -11,9 +11,13 @@ $ ls  ~/.aws
 
 Run the command:
 
-
-
 Step 1: Install the required tools...
+
+a. jq
+curl http://stedolan.github.io/jq/download/linux64/jq -o /usr/local/bin/jq
+chmod +x /usr/local/bin/jq
+
+
 
 Step 2: Setup & Get AWS Credentials: http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
 
@@ -29,4 +33,4 @@ Default output format [None]: json
 
 Step 4: 
 
-./bin/create-stack.sh -d qbtest.net
+./bin/create-stack.sh -d cp.qbtest.net
