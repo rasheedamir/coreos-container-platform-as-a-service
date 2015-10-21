@@ -34,3 +34,30 @@ Default output format [None]: json
 Step 4: 
 
 ./bin/create-stack.sh -d cp.qbtest.net
+
+
+INFO: generating a new key pair in stacks/cpqbtestnet/cp.pem
+./bin/create-stack.sh: line 111: warning: here-document at line 106 delimited by end-of-file (wanted `!')
+./bin/create-stack.sh: line 111: warning: here-document at line 106 delimited by end-of-file (wanted `!')
+{
+    "StackId": "arn:aws:cloudformation:eu-west-1:838562712530:stack/cpqbtestnet/79893260-7694-11e5-9944-50d5026f660a"
+}
+INFO: create in progress. sleeping 15 seconds...
+INFO: create in progress. sleeping 15 seconds...
+INFO: create in progress. sleeping 15 seconds...
+INFO: create in progress. sleeping 15 seconds...
+INFO: create in progress. sleeping 15 seconds...
+INFO: create in progress. sleeping 15 seconds...
+INFO: create in progress. sleeping 15 seconds...
+INFO: create in progress. sleeping 15 seconds...
+
+CoreOSServerAutoScale	52.19.101.215	172.31.5.2
+CoreOSServerAutoScaleConsulServer	52.30.21.77	172.31.19.214
+CoreOSServerAutoScaleConsulServer	52.30.49.231	172.31.4.177
+CoreOSServerAutoScaleConsulServer	52.30.64.100	172.31.33.109
+
+ssh-add stacks/cpqbtestnet/cp.pem
+ssh core@52.30.103.198
+
+to view consul:
+ssh -A -L 8500:172.31.19.214:8500 core@52.30.64.100
